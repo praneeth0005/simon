@@ -46,12 +46,43 @@ function animatePress(currentColour) {
     }, 100);
 }
 function checkAnswer() {
-    if (gamePattern[index] !== userClicked) {
-        $("h1").text("You Lost :(");
-        started=false
+    // if (gamePattern[index] !== userClicked) {
+    //     $("h1").text("You Lost :(");
+    //     started=false
+    // }
+    // else {
+    //     index += 1
+    // }
+    var isComplete =false;
+    for(var i=0;i<gamePattern.length;i++){
+        if(gamePattern[i]==userClickedPattern[index+i]){
+            isComplete=true;
+            console.log("true");
+        }
+        else{
+                console.log("fail");
+                //    var wrong = new Audio("./sounds/wrong.mp3");
+                // wrong.play();
+                // $("body").addClass("game-over");
+                // setTimeout(function() {
+                //     $("body").removeClass("game-over");
+                // }, 200);
+                // $("h1").text("Game Over, Press Any Key to Restart");
+                // startOver()
+                isComplete =false;
+            break;
+        }
     }
-    else {
-        index += 1
-    }
+}
+    if(isComplete===true){
+        index = userClickedPattern.length;
+        setTimeout(function() {
+            nextSequence();
+        }, 1000);
+}
+    function startOver(){
+    level =0;
+    gamePattern =0;
+    started = false;
 }
 
