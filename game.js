@@ -48,6 +48,7 @@ function animatePress(currentColour) {
 function checkAnswer() {
     if (gamePattern[index] !== userClicked) {
         $("h1").text("You Lost :(");
+        started=false
     }
     else {
         index += 1
